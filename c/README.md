@@ -8,3 +8,9 @@ Mac install
 brew install avr-gcc
 ```
 
+Linux components need installing
+
+```bash
+sudo apt-get install gcc-avr binutils-avr avr-libc
+sudo apt-get install avrdude
+```
