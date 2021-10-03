@@ -1,1 +1,3 @@
 leds/Cargo.lock
+c/blink-bare-metal/main.hex
+c/blink-bare-metal/a.out
