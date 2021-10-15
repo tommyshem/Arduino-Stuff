@@ -14,3 +14,13 @@ Linux components need installing
 sudo apt-get install gcc-avr binutils-avr avr-libc
 sudo apt-get install avrdude
 ```
+
+
+## QEMU Emulator and debug using GDB
+
+```bash
+avr-gcc -g -ggdb 
+avr-objcopy -O binary prog.avr5.out main.bin
+qemu-sysyem-avr -s -S -nographic -machine mega2560 -bios main.elf
+avr-gdb -ex 'target remote :1234' main.bin
+```
