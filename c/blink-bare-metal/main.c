@@ -17,6 +17,8 @@
 // avrdude -v -patmega328p -carduino -P/dev/ttyUSB0 -b57600 -D -Uflash:w:main.hex:i
 
 // define the direct memory address
+#include "debug.h"
+
 #define DDRB *((volatile unsigned char *)0x24)  // output mode address
 #define PORTB *((volatile unsigned char *)0x25) // portb output address
 // bit macros
