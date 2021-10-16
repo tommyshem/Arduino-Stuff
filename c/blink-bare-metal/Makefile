@@ -19,7 +19,11 @@ SRCS=main.c
 
 # build all c files with release flags and convert to ihex file in /tmp/avrbuild folder
 .PHONY: all
-all:
+all: clean release flash
+
+# build all c files with release flags and convert to ihex file in /tmp/avrbuild folder
+.PHONY: release
+release:
 	mkdir -p /tmp/avrbuild/
 	${CC} ${RELEASE-CFLAGS} -o /tmp/avrbuild/${TARGET}.bin ${SRCS}
 	${OBJCOPY} -j .text -j .data -O ihex /tmp/avrbuild/${TARGET}.bin /tmp/avrbuild/${TARGET}.hex
@@ -60,7 +64,8 @@ clean:
 .PHONY: help
 help:
 	@echo "Build commands available"
-	@echo "all    -- builds all the files with release flags and converts it to a i hex file in the /tmp/avrbuild folder"
+	@echo "all    -- builds all the files with release flags and converts hex file and flash chip"
+	@echo "release -- builds all the files with release flags and converts it to a i hex file in the /tmp/avrbuild folder"
 	@echo "debug  -- builds all the files with debug flags and converts it to a i hex file in the /tmp/avrbuild folder"
 	@echo ""
 	@echo "Flash the chip commands available"
