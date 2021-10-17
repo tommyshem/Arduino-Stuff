@@ -19,6 +19,10 @@
 // define the direct memory address
 #include "debug.h"
 
+#ifndef F_CPU
+#define F_CPU 16000000UL // telling controller crystal frequency (16 MHz AVR ATMega328P)
+#endif
+
 #define DDRB *((volatile unsigned char *)0x24)  // output mode address
 #define PORTB *((volatile unsigned char *)0x25) // portb output address
 // bit macros
