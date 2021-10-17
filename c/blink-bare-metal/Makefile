@@ -40,6 +40,9 @@ debug:
 sim:
 	qemu-system-avr -nographic -s -S -machine arduino-uno -bios /tmp/avrbuild/${TARGET}.bin
 
+simavr:
+	simavr -g -m atmega328p /tmp/avrbuild/${TARGET}.bin
+
 # run gdb debugger
 .PHONY: gdb
 gdb:
