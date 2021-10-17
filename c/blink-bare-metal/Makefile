@@ -43,7 +43,7 @@ sim:
 # run gdb debugger
 .PHONY: gdb
 gdb:
-	gdb -ex 'target remote :1234' -tui -cd=/tmp/avrbuild/ /tmp/avrbuild/${TARGET}.bin
+	avr-gdb -ex 'target remote :1234' -tui -cd=/tmp/avrbuild/ /tmp/avrbuild/${TARGET}.bin
 
 # flash the i hex file to the usb port
 # -c the proctol for programming
