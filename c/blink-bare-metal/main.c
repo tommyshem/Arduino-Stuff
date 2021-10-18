@@ -18,13 +18,15 @@
 
 // define the direct memory address
 #include "debug.h"
+#include <avr/io.h>
+#include <util/delay.h>
 
 #ifndef F_CPU
 #define F_CPU 16000000UL // telling controller crystal frequency (16 MHz AVR ATMega328P)
 #endif
 
-#define DDRB *((volatile unsigned char *)0x24)  // output mode address
-#define PORTB *((volatile unsigned char *)0x25) // portb output address
+// #define DDRB *((volatile unsigned char *)0x24)  // output mode address
+// #define PORTB *((volatile unsigned char *)0x25) // portb output address
 // bit macros
 #define BITSET(address, bit) ((address) |= (1UL << (bit)))
 #define BITCLEAR(address, bit) ((address) &= ~(1UL << (bit)))
@@ -35,19 +37,12 @@
 int main()
 {
     DDRB = 32; // set ouput mode
-
+	PORTB = 0;
     while (1)
     { // loop
-        PORTB = 32;
-        for (long i = 0; i < 1000000; i++)
-        {
-            BITSET(PORTB, 5);
-        }
-
-        PORTB = 0;
-        for (long i = 0; i < 1000000; i++)
-        {
-            BITCLEAR(PORTB, 5);
-        }
+       BITSET(PORTB, 5);
+       _delay_ms(100);
+       BITCLEAR(PORTB, 5);
+       _delay_ms(100);
     }
 }
